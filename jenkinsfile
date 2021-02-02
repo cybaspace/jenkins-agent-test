@@ -12,6 +12,7 @@ pipeline {
                         returnStdout: true
                     ).trim()
                     agentName = "commerce-agent-" + COMMERCE_VERSION
+                    sh 'echo "Test" > test.txt'
                 }
             }
         }
@@ -28,6 +29,8 @@ pipeline {
             steps {
                 script {
                     println agentName
+                    sh 'cat test.txt'
+
                 }
             }
         }
