@@ -1,4 +1,5 @@
 agentName = "commerce-version-chooser"
+COMMERCE_VERSION = ''
 
 pipeline {
     agent { label agentName }
@@ -41,7 +42,9 @@ pipeline {
             steps {
                 script {
                     println agentName
+                    println COMMERCE_VERSION
                 }
+                echo "${COMMERCE_VERSION}"
             }
         }
     }
