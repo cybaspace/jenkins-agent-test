@@ -1,4 +1,4 @@
-agentName = "commerce-version-chooser"
+agentName = "commerce-manifest-tool"
 COMMERCE_VERSION = ''
 
 pipeline {
