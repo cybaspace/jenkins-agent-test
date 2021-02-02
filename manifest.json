@@ -1,5 +1,5 @@
 {
-  "commerceSuiteVersion": "2011",
+  "commerceSuiteVersion": "2011.0",
   "useCloudExtensionPack": true,
   "enableImageProcessingService": true,
   "extensions": [
