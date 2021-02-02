@@ -1,0 +1,35 @@
+agentName = "commerce-version-chooser"
+
+pipeline {
+    agent { label agentName }
+
+    stages {
+        stage('Prep') {
+            steps {
+                script {
+                    COMMERCE_VERSION = sh (
+                        script: 'sap-commerce-manifest-tool -latest version',
+                        returnStdout: true
+                    ).trim()
+                    agentName = "commerce-agent-" + COMMERCE_VERSION
+                }
+            }
+        }
+        stage('Checking') {
+            steps {
+                script {
+                    println agentName
+                }
+            }
+        }
+        stage('Final') {
+            agent { label agentName }
+
+            steps {
+                script {
+                    println agentName
+                }
+            }
+        }
+    }
+}
