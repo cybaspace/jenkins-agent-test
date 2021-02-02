@@ -13,6 +13,7 @@ pipeline {
                     ).trim()
                     agentName = "commerce-agent-" + COMMERCE_VERSION
                     sh 'echo "Test" > test.txt'
+                    sh 'ls -al'
                 }
             }
         }
@@ -20,6 +21,17 @@ pipeline {
             steps {
                 script {
                     println agentName
+                    sh 'ls -al'
+                }
+            }
+        }
+        stage('Between') {
+            agent { label agentName }
+
+            steps {
+                script {
+                    println agentName
+                    sh 'ls -al'
                 }
             }
         }
@@ -29,8 +41,6 @@ pipeline {
             steps {
                 script {
                     println agentName
-                    sh 'cat test.txt'
-
                 }
             }
         }
