@@ -9,7 +9,7 @@ pipeline {
             steps {
                 script {
                     COMMERCE_VERSION = sh (
-                        script: 'grep commerceSuiteVersion manifest.json | cut -d\\':\\' -f2 |sed \\'s/[",]//g\\'',
+                        script: 'grep commerceSuiteVersion manifest.json | cut -d\':\' -f2 |sed \'s/[",]//g\'',
                         returnStdout: true
                     ).trim()
                     agentName = "commerce-agent-" + COMMERCE_VERSION
