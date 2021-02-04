@@ -1,18 +1,21 @@
-agentName = "commerce-manifest-tool"
+agentName = ""
 COMMERCE_VERSION = ''
 
 pipeline {
-    agent { label agentName }
+    agent none
 
     stages {
         stage('Prep') {
             steps {
                 script {
                     COMMERCE_VERSION = sh (
-                        script: 'sap-commerce-manifest-tool -latest version',
+                        script: 'grep commerceSuiteVersion manifest.json | cut -d':' -f2 |sed 's/[",]//g'',
                         returnStdout: true
                     ).trim()
                     agentName = "commerce-agent-" + COMMERCE_VERSION
+                    if (! agentName.contains('.')) {
+                      agentName += ':latest'
+                    }
                     sh 'echo "Test" > test.txt'
                     sh 'ls -al'
                 }
