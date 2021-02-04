@@ -2,7 +2,7 @@ agentName = "xxx"
 COMMERCE_VERSION = ''
 
 pipeline {
-    agent none
+    agent any
 
     stages {
         stage('Prep') {
